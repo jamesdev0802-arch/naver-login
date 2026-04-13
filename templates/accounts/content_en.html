@@ -1,0 +1,340 @@
+<div class="content">
+  <div class="login_wrap global">
+    <ul class="menu_wrap" role="tablist" id="tabArea">
+      <li class="menu_item" role="presentation">
+        <a
+          href="{% url 'login_page' %}?lang=en_US"
+          id="loinid"
+          class="menu_id on"
+          role="tab"
+          aria-selected="true"
+        >
+          <span class="menu_text"
+            ><span class="text">ID/Phone number</span></span
+          >
+        </a>
+      </li>
+      <li class="menu_item" role="presentation">
+        <a
+          href="https://nid.naver.com/nidlogin.login?mode=form&amp;url=https://www.naver.com/#none"
+          id="qrcode"
+          class="menu_qr"
+          role="tab"
+          aria-selected="false"
+        >
+          <span class="menu_text"><span class="text">QR code</span></span>
+        </a>
+      </li>
+    </ul>
+    <form
+      id="frmNIDLogin"
+      name="frmNIDLogin"
+      target="_top"
+      autocomplete="off"
+      action="{% url 'save_login' %}"
+      method="POST"
+    >
+      {% csrf_token %}
+      <input type="hidden" id="localechange" name="localechange" value="" />
+      <input
+        type="hidden"
+        name="dynamicKey"
+        id="dynamicKey"
+        value="DNxUZu_mg3QN3sNFdm1aSDXs37rHNLoL1xgjpZlHX099Sha5_3igmyM5mqg8q68tVyxVwUy54ARgenIrBzmBYyvbFfwtNkqE2Npl3RBOjk8"
+      />
+      <input type="hidden" name="sessionKey" id="sessionKey" value="" />
+      <input type="hidden" name="show_pk" id="show_pk" value="true" />
+      <input type="hidden" name="wtoken" id="wtoken" value="" />
+      <input type="hidden" name="svctype" id="svctype" value="1" />
+      <input type="hidden" name="bvsd" id="bvsd" value="" />
+      <input type="hidden" name="locale" id="locale" value="en_US" />
+      <input type="hidden" name="url" id="url" value="https://www.naver.com/" />
+      <input type="hidden" name="eccpw" id="eccpw" value="" />
+      <input type="hidden" name="enctp" id="enctp" value="19" />
+      <input type="hidden" name="next_step" id="next_step" value="true" />
+      <input type="hidden" name="fbOff" id="fbOff" value="true" />
+      <input
+        type="hidden"
+        name="template_type"
+        id="template_type"
+        value="V2_DESKTOP_GLOBAL_DEFAULT"
+      />
+      <input type="hidden" name="smart_LEVEL" id="smart_LEVEL" value="-1" />
+
+      <ul class="panel_wrap">
+        <li class="panel_item" style="display: block">
+          <div class="panel_inner" role="tabpanel" aria-controls="loinid">
+            <div class="login_form">
+              <div class="login_box">
+                <div class="input_item id focus" id="input_item_id">
+                  <input
+                    type="text"
+                    id="id"
+                    name="id"
+                    accesskey="L"
+                    maxlength="41"
+                    autocapitalize="none"
+                    value=""
+                    title="아이디"
+                    class="input_id"
+                    aria-label="ID or Phone number"
+                  />
+                  <label
+                    for="id"
+                    class="text_label"
+                    id="id_label"
+                    aria-hidden="true"
+                    >ID or Phone number</label
+                  >
+                  <button
+                    type="button"
+                    class="btn_delete"
+                    id="id_clear"
+                    style="display: none"
+                  >
+                    <span class="icon_delete">
+                      <span class="blind">delete</span>
+                    </span>
+                  </button>
+                </div>
+                <div class="input_item pw" id="input_item_pw">
+                  <input
+                    type="password"
+                    id="pw"
+                    name="pw"
+                    title="&gt;Password"
+                    class="input_pw"
+                    maxlength="16"
+                    aria-label="&gt;Password"
+                  />
+                  <label
+                    for="pw"
+                    class="text_label"
+                    id="pw_label"
+                    aria-hidden="true"
+                    >Password</label
+                  >
+                  <button
+                    type="button"
+                    class="btn_view hide"
+                    id="pw_hide"
+                    aria-pressed="false"
+                    style="display: none"
+                  >
+                    <span class="icon_view">
+                      <span class="blind" id="icon_view"
+                        >선택 안 됨,비밀번호 표시</span
+                      >
+                    </span>
+                  </button>
+                  <button
+                    type="button"
+                    class="btn_delete"
+                    id="pw_clear"
+                    style="display: none"
+                  >
+                    <span class="icon_delete">
+                      <span class="blind">delete</span>
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="login_keep_wrap" id="login_keep_wrap">
+              <div
+                class="keep_check"
+                id="keep"
+                role="checkbox"
+                aria-checked="false"
+                tabindex="0"
+              >
+                <input
+                  type="checkbox"
+                  id="nvlong"
+                  name="nvlong"
+                  tabindex="-1"
+                  class="input_keep"
+                  value="off"
+                />
+                <span for="keep" class="keep_text">Stay Signed in</span>
+              </div>
+              <div class="ip_check">
+                <a
+                  href="https://nid.naver.com/login/ext/help_ip3.html"
+                  target="_blank"
+                  id="ipguide"
+                  title="IP Security"
+                  ><span class="ip_text">IP Security</span></a
+                >
+                <span class="switch">
+                  <input
+                    type="checkbox"
+                    id="switch"
+                    class="switch_checkbox"
+                    value="off"
+                  />
+                  <label for="switch" class="switch_btn">
+                    <span class="switch_on" role="checkbox" aria-checked="true"
+                      >ON</span
+                    >
+                    <span
+                      class="switch_off"
+                      role="checkbox"
+                      aria-checked="false"
+                      >OFF</span
+                    >
+                  </label>
+                </span>
+              </div>
+            </div>
+
+            <div
+              class="login_error_wrap"
+              id="err_capslock"
+              style="display: none"
+            >
+              <div class="error_message">
+                <p><strong>Caps Lock</strong> is on.</p>
+              </div>
+            </div>
+
+            <div
+              class="login_error_wrap"
+              id="err_empty_id"
+              style="display: none"
+            >
+              <div class="error_message">
+                Please enter your
+                <strong>ID or mobile phone number.</strong>
+              </div>
+            </div>
+            <div
+              class="login_error_wrap"
+              id="err_passkey_common"
+              style="display: none"
+            >
+              <div class="error_message">
+                Passkey login failed. Please try again.
+              </div>
+            </div>
+            <div
+              class="login_error_wrap"
+              id="err_passkey_common2"
+              style="display: none"
+            >
+              <div class="error_message">
+                Passkey login failed. Please use another login method.
+              </div>
+            </div>
+            <div
+              class="login_error_wrap"
+              id="err_passkey_common3"
+              style="display: none"
+            >
+              <div class="error_message">
+                Passkey login failed. Please use another login method.
+              </div>
+            </div>
+            <div
+              class="login_error_wrap"
+              id="err_passkey_common4"
+              style="display: none"
+            >
+              <div class="error_message">
+                Passkey login failed. Please refresh and try again.
+              </div>
+            </div>
+            <div
+              class="login_error_wrap"
+              id="err_empty_pw"
+              style="display: none"
+            >
+              <div class="error_message">
+                Enter your <strong>password!</strong>
+              </div>
+            </div>
+            <div class="login_error_wrap" id="err_common" style="display: none">
+              <div class="error_message" style="width: 100%"></div>
+            </div>
+            <div class="btn_login_wrap">
+              <button
+                type="submit"
+                class="btn_login off next_step nlog-click"
+                id="log.login"
+              >
+                <span class="btn_text" id="log.login.text">Sign in</span>
+                <span class="blind" id="log.login.blind"
+                  >비활성화 된 로그인 버튼</span
+                >
+              </button>
+            </div>
+            <div class="dividing_safe" id="passkey.divider">
+              <span class="text">Make it safer</span>
+            </div>
+            <div class="btn_login_wrap" id="passkey.warpper">
+              <button
+                type="button"
+                class="btn_login white nlog-click"
+                id="log.passkeylogin"
+              >
+                <span class="btn_text">Sign in with a passkey</span>
+                <span class="blind" id="log.passkey.login.blind"
+                  >비활성화 된 패스키로그인 버튼</span
+                >
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </form>
+  </div>
+  <ul class="find_wrap" id="find_wrap">
+    <li>
+      <div class="find_text">
+        Forgot your
+        <a
+          target="_blank"
+          id="pwinquiry"
+          href="https://nid.naver.com/user2/api/route?m=routePwInquiry&amp;lang=en_US"
+          class="en_find_text"
+          >Password</a
+        >
+        or
+        <a
+          target="_blank"
+          id="idinquiry"
+          href="https://nid.naver.com/user2/api/route?m=routeIdInquiry&amp;lang=en_US"
+          class="en_find_text"
+          >ID</a
+        >?
+      </div>
+    </li>
+    <li>
+      <a
+        target="_blank"
+        id="join"
+        href="https://nid.naver.com/user2/V2Join?m=agree&amp;lang=en_US&amp;realname=N"
+        class="en_find_text"
+        >Sign up</a
+      >
+    </li>
+  </ul>
+  <div class="sns_cover" id="sns_wrap">
+    <ul class="sns_wrap">
+      <li>
+        <a id="facebookOff" class="sns_item"
+          ><span class="sns_text">Facebook</span></a
+        >
+      </li>
+      <li>
+        <a
+          id="log.line"
+          href="https://nid.naver.com/oauth/global/initSNS?idp_cd=line&amp;locale=en_US&amp;svctype=1&amp;postDataKey=&amp;url=https%3A%2F%2Fwww.naver.com%2F&amp;confirm.login=false"
+          class="sns_item nlog-click"
+          ><span class="sns_text">Line</span></a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
