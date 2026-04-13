@@ -42,7 +42,6 @@ htmlcov/
 
 # IDEs and editors
 .idea/
-.vscode/
 *.swp
 *.swo
 *~
@@ -54,3 +53,6 @@ Desktop.ini
 
 # Node (if used in this project)
 node_modules/
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
